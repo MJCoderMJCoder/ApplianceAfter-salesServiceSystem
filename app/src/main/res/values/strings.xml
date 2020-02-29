@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">家电售后</string>
+
+
+    <string name="tab_menu_alert">维修申请</string>
+    <string name="tab_menu_profile">信息</string>
+    <string name="tab_menu_pay">工作栏</string>
+    <string name="tab_menu_setting">零件</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>

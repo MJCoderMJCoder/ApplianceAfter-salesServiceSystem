@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@mipmap/bg"
+                tools:context=".activity.UserDetailActivity">
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/bg_white"
+            tools:context=".activity.UserDetailActivity" android:orientation="vertical">
+
+        <TextView
+                android:text="维修简述："
+                android:layout_width="wrap_content"
+                android:padding="5dp"
+                android:layout_height="wrap_content" android:id="@+id/maintenance_name"/>
+        <RelativeLayout android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:padding="5dp">
+            <TextView
+                    android:text="维修地址："
+                    android:layout_width="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_height="wrap_content" android:id="@+id/maintenance_address_title"/>
+            <TextView
+                    android:text="维修地址"
+                    android:layout_width="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_toRightOf="@id/maintenance_address_title"
+                    android:layout_height="wrap_content" android:id="@+id/maintenance_address"/>
+        </RelativeLayout>
+        <RelativeLayout android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:padding="5dp">
+            <TextView
+                    android:text="维修详情："
+                    android:layout_width="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_height="wrap_content" android:id="@+id/maintenance_appliance_title"/>
+            <TextView
+                    android:text="维修详情"
+                    android:layout_width="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_toRightOf="@id/maintenance_appliance_title"
+                    android:layout_height="wrap_content" android:id="@+id/maintenance_appliance"/>
+        </RelativeLayout>
+
+        <TextView
+                android:text="当前状态："
+                android:layout_width="wrap_content"
+                android:padding="5dp"
+                android:layout_height="wrap_content" android:id="@+id/maintenance_status"/>
+
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/bg_black">
+        </View>
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            <RelativeLayout
+                    android:id="@+id/publishRL"
+                    android:layout_alignParentBottom="true"
+                    android:layout_width="match_parent"
+                    android:layout_margin="3dp"
+                    android:background="@drawable/rounded_rectangle_border"
+                    android:layout_height="wrap_content">
+
+                <Button
+                        android:id="@+id/publishBtn"
+                        android:layout_alignParentRight="true"
+                        android:text="发表"
+                        android:onClick="doClick"
+                        android:background="@drawable/rounded_rectangle_border"
+                        android:padding="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                </Button>
+                <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPersonName"
+                        android:padding="10dp"
+                        android:background="@null"
+                        android:textSize="14sp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_toLeftOf="@id/publishBtn"
+                        android:hint="在此发表留言"
+                        android:ems="10"
+                        android:id="@+id/editText"/>
+            </RelativeLayout>
+            <ListView
+                    android:id="@+id/msg_list"
+                    android:layout_width="match_parent"
+                    android:layout_above="@id/publishRL"
+                    android:layout_height="match_parent">
+            </ListView>
+
+
+            <ProgressBar
+                    style="?android:attr/progressBarStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:id="@+id/progressBar"/>
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>

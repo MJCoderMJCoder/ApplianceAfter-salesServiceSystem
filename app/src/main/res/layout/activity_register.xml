@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@mipmap/bg"
+        android:weightSum="8"
+        tools:context=".activity.RegisterActivity">
+
+    <RelativeLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_margin="10dp"
+                android:padding="10dp"
+                android:background="@drawable/rounded_rectangle_bg_white"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:inputType="textPersonName"
+                android:hint="请输入姓名"
+                android:textSize="14sp"
+                android:ems="10"
+                android:id="@+id/name"/>
+    </RelativeLayout>
+    <RelativeLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:padding="10dp"
+                android:textSize="14sp"
+                android:background="@drawable/rounded_rectangle_bg_white"
+                android:inputType="phone"
+                android:ems="10"
+                android:hint="请输入手机号"
+                android:id="@+id/phone"/>
+    </RelativeLayout>
+    <RelativeLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+
+        <RadioGroup
+                android:id="@+id/gender"
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_margin="10dp"
+                android:padding="10dp"
+                android:background="@drawable/rounded_rectangle_bg_white"
+                android:weightSum="2"
+                android:layout_height="wrap_content">
+
+            <RadioButton
+                    android:text="男"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content" android:id="@+id/man"/>
+
+            <RadioButton
+                    android:text="女"
+                    android:layout_weight="1"
+                    android:checked="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/woman"/>
+        </RadioGroup>
+    </RelativeLayout>
+    <RelativeLayout
+            android:layout_weight="2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:padding="10dp"
+                android:inputType="textMultiLine"
+                android:hint="请输入地址信息"
+                android:textSize="14sp"
+                android:background="@drawable/rounded_rectangle_bg_white"
+                android:gravity="start|top"
+                android:ems="10"
+                android:id="@+id/address"/>
+    </RelativeLayout>
+    <RelativeLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:padding="10dp"
+                android:hint="请输入密码"
+                android:inputType="textPassword"
+                android:background="@drawable/rounded_rectangle_bg_white"
+                android:ems="10"
+                android:textSize="14sp"
+                android:id="@+id/pwd"/>
+    </RelativeLayout>
+    <RelativeLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:padding="10dp"
+                android:hint="请再此确认密码"
+                android:inputType="textPassword"
+                android:textSize="14sp"
+                android:background="@drawable/rounded_rectangle_bg_white"
+                android:ems="10"
+                android:id="@+id/pwd_again"/>
+    </RelativeLayout>
+    <RelativeLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+
+        <Button
+                android:text="提   交"
+                android:background="@drawable/rounded_rectangle_primary_dark"
+                android:layout_width="match_parent"
+                android:layout_centerInParent="true"
+                android:layout_margin="10dp"
+                android:onClick="doClick"
+                android:padding="10dp"
+                android:textSize="14sp"
+                android:textColor="@android:color/white"
+                android:layout_height="wrap_content" android:id="@+id/submit"/>
+    </RelativeLayout>
+
+
+</LinearLayout>

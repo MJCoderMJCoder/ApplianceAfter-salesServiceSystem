@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:padding="5dp"
+              android:layout_height="match_parent">
+
+    <TextView
+            android:text="维修简述："
+            android:layout_width="wrap_content"
+            android:padding="1dp"
+            android:layout_height="wrap_content" android:id="@+id/maintenance_name"/>
+    <RelativeLayout android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="1dp">
+        <TextView
+                android:text="维修地址："
+                android:layout_width="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_height="wrap_content" android:id="@+id/maintenance_address_title"/>
+        <TextView
+                android:text="维修地址"
+                android:layout_width="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_toRightOf="@id/maintenance_address_title"
+                android:layout_height="wrap_content" android:id="@+id/maintenance_address"/>
+    </RelativeLayout>
+    <RelativeLayout android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="1dp">
+        <TextView
+                android:text="维修详情："
+                android:layout_width="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_height="wrap_content" android:id="@+id/maintenance_appliance_title"/>
+        <TextView
+                android:text="维修详情"
+                android:layout_width="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_toRightOf="@id/maintenance_appliance_title"
+                android:layout_height="wrap_content" android:id="@+id/maintenance_appliance"/>
+    </RelativeLayout>
+
+    <TextView
+            android:text="当前状态："
+            android:layout_width="wrap_content"
+            android:padding="1dp"
+            android:layout_height="wrap_content" android:id="@+id/maintenance_status"/>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:gravity="center"
+                  android:padding="1dp"
+                  android:id="@+id/modify"
+                  android:visibility="gone"
+                  android:textColor="@color/colorPrimary"
+                  android:text="修改申请"
+                  android:layout_weight="1">
+
+        </TextView>
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:gravity="center"
+                  android:padding="1dp"
+                  android:id="@+id/cancel"
+                  android:visibility="gone"
+                  android:textColor="@color/colorAccent"
+                  android:text="取消申请"
+                  android:layout_weight="1">
+
+        </TextView>
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="查看详情"
+                  android:id="@+id/detail"
+                  android:textColor="@color/colorPrimary"
+                  android:gravity="center"
+                  android:padding="1dp"
+                  android:layout_weight="1">
+
+        </TextView>
+    </LinearLayout>
+</LinearLayout>

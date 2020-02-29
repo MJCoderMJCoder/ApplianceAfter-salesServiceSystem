@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@mipmap/bg"
+        android:weightSum="7"
+        tools:context=".activity.AddPartActivity">
+
+    <RelativeLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_margin="10dp"
+                android:padding="10dp"
+                android:background="@drawable/rounded_rectangle_bg_white"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:inputType="text"
+                android:hint="请输入家电名称"
+                android:textSize="14sp"
+                android:ems="10"
+                android:id="@+id/appliance_name"/>
+    </RelativeLayout>
+    <RelativeLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:padding="10dp"
+                android:textSize="14sp"
+                android:background="@drawable/rounded_rectangle_bg_white"
+                android:inputType="text"
+                android:ems="10"
+                android:hint="请输入家电型号"
+                android:id="@+id/appliance_model"/>
+    </RelativeLayout>
+    <RelativeLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:padding="10dp"
+                android:hint="请输入家电零件名称"
+                android:inputType="text"
+                android:background="@drawable/rounded_rectangle_bg_white"
+                android:ems="10"
+                android:textSize="14sp"
+                android:id="@+id/appliance_part"/>
+    </RelativeLayout>
+    <RelativeLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:padding="10dp"
+                android:hint="请输入零件价格"
+                android:inputType="numberDecimal"
+                android:textSize="14sp"
+                android:background="@drawable/rounded_rectangle_bg_white"
+                android:ems="10"
+                android:id="@+id/appliance_price"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+            android:layout_weight="2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:padding="10dp"
+                android:inputType="textMultiLine"
+                android:hint="请输入家电的零件参数"
+                android:textSize="14sp"
+                android:background="@drawable/rounded_rectangle_bg_white"
+                android:gravity="start|top"
+                android:ems="10"
+                android:id="@+id/appliance_arg"/>
+    </RelativeLayout>
+
+
+    <RelativeLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+
+        <Button
+                android:text="提   交"
+                android:background="@drawable/rounded_rectangle_primary_dark"
+                android:layout_width="match_parent"
+                android:layout_centerInParent="true"
+                android:layout_margin="10dp"
+                android:onClick="doClick"
+                android:padding="10dp"
+                android:textSize="14sp"
+                android:textColor="@android:color/white"
+                android:layout_height="wrap_content" android:id="@+id/submit"/>
+    </RelativeLayout>
+
+
+</LinearLayout>

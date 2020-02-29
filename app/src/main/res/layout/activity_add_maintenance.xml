@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@mipmap/bg"
+        android:weightSum="6"
+        tools:context=".activity.AddMaintenanceActivity">
+
+    <RelativeLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_margin="10dp"
+                android:padding="10dp"
+                android:background="@drawable/rounded_rectangle_bg_white"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:inputType="text"
+                android:hint="请对维修申请进行简单描述"
+                android:textSize="14sp"
+                android:ems="10"
+                android:id="@+id/maintenance_name"/>
+    </RelativeLayout>
+    <RelativeLayout
+            android:layout_weight="2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:padding="10dp"
+                android:textSize="14sp"
+                android:background="@drawable/rounded_rectangle_bg_white"
+                android:inputType="textMultiLine"
+                android:ems="10"
+                android:gravity="start|top"
+                android:hint="请输入此次维修申请的详细地址信息"
+                android:id="@+id/maintenance_address"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+            android:layout_weight="2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:padding="10dp"
+                android:inputType="textMultiLine"
+                android:hint="请输入维修申请的其他家电信息和详情"
+                android:textSize="14sp"
+                android:background="@drawable/rounded_rectangle_bg_white"
+                android:gravity="start|top"
+                android:ems="10"
+                android:id="@+id/maintenance_appliance"/>
+    </RelativeLayout>
+
+
+    <RelativeLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+
+        <Button
+                android:text="提   交"
+                android:background="@drawable/rounded_rectangle_primary_dark"
+                android:layout_width="match_parent"
+                android:layout_centerInParent="true"
+                android:layout_margin="10dp"
+                android:onClick="doClick"
+                android:padding="10dp"
+                android:textSize="14sp"
+                android:textColor="@android:color/white"
+                android:layout_height="wrap_content" android:id="@+id/submit"/>
+    </RelativeLayout>
+
+</LinearLayout>

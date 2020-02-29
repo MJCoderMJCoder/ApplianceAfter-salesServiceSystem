@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:background="@mipmap/bg"
+        android:layout_height="match_parent"
+        tools:context=".activity.MaintainerHomeActivity">
+
+    <LinearLayout
+            android:id="@+id/ly_tab_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/bg_white"
+            android:weightSum="3"
+            android:orientation="horizontal">
+
+        <TextView
+                android:id="@+id/maintenance_request"
+                android:layout_width="0dp"
+                android:onClick="doClick"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/tab_menu_bg"
+                android:drawablePadding="3dp"
+                android:drawableTop="@drawable/tab_menu_channel"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/tab_menu_alert"
+                android:textColor="@drawable/tab_menu_text"
+                android:textSize="14sp"/>
+
+        <TextView
+                android:id="@+id/work_field"
+                android:layout_width="0dp"
+                android:onClick="doClick"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/tab_menu_bg"
+                android:drawablePadding="3dp"
+                android:drawableTop="@drawable/tab_menu_better"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/tab_menu_pay"
+                android:textColor="@drawable/tab_menu_text"
+                android:textSize="14sp"/>
+
+        <TextView
+                android:id="@+id/part"
+                android:layout_width="0dp"
+                android:onClick="doClick"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/tab_menu_bg"
+                android:drawablePadding="3dp"
+                android:drawableTop="@drawable/tab_menu_setting"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/tab_menu_setting"
+                android:textColor="@drawable/tab_menu_text"
+                android:textSize="14sp"/>
+
+
+    </LinearLayout>
+
+    <View
+            android:id="@+id/div_tab_bar"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/div_white"
+            android:layout_above="@id/ly_tab_bar"/>
+
+
+    <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/div_tab_bar"
+            android:background="@color/bg_white"
+            android:id="@+id/ly_content">
+
+    </FrameLayout>
+
+    <Button
+            android:id="@+id/add_maintainer"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:visibility="visible"
+            android:onClick="doClick"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:layout_margin="10dp"
+            android:paddingBottom="2dp"
+            android:textColor="@android:color/white"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/circle"
+            android:text="+"></Button>
+
+</RelativeLayout>
