@@ -1,13 +1,17 @@
 package com.lzf.applianceafter_salesservicesystem.activity;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import com.lzf.applianceafter_salesservicesystem.R;
+import com.lzf.applianceafter_salesservicesystem.bean.Maintainer;
 import com.lzf.applianceafter_salesservicesystem.bean.Maintenance;
 import com.lzf.applianceafter_salesservicesystem.bean.Message;
+import com.lzf.applianceafter_salesservicesystem.bean.User;
 import com.lzf.applianceafter_salesservicesystem.util.DBUtil;
 import com.lzf.applianceafter_salesservicesystem.util.LogUtil;
 import com.lzf.applianceafter_salesservicesystem.util.ReusableAdapter;
@@ -61,9 +65,92 @@ public class MaintainerDetailActivity extends AppCompatActivity {
                 ListView listView = findViewById(R.id.msg_list);
                 reusableAdapter = new ReusableAdapter<Message>(messages, R.layout.item_msg) {
                     @Override
-                    public void bindView(ViewHolder holder, Message obj) {
+                    public void bindView(ViewHolder holder, final Message obj) {
                         holder.setText(R.id.name, obj.getUser_name() + obj.getMaintainer_name() + "：");
                         holder.setText(R.id.msg, obj.getMessage_content());
+                        holder.setOnClickListener(R.id.name, new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                progressBar.setVisibility(View.VISIBLE);
+                                new Thread() {
+                                    @Override
+                                    public void run() {
+                                        super.run();
+                                        Connection conn = null;
+                                        PreparedStatement ps = null;
+                                        ResultSet rs = null;
+                                        try {
+                                            conn = DBUtil.getConnection();
+                                            if (conn != null) {
+                                                if (obj.getMaintainer() < 0 || "".equals(obj.getMaintainer_name())) {
+                                                    ps = conn.prepareStatement("SELECT * FROM user where user_id = " + obj.getUser());
+                                                    rs = ps.executeQuery();
+                                                    while (rs.next()) {
+                                                        final User user = new User(rs.getInt("user_id"), rs.getString("user_name"), rs.getString("user_phone"), rs.getString("user_gender"), rs.getString("user_address"), rs.getString("user_pwd"));
+                                                        runOnUiThread(new Runnable() {
+                                                            @Override
+                                                            public void run() {
+                                                                progressBar.setVisibility(View.GONE);
+                                                                //初始化Builder
+                                                                AlertDialog.Builder builder = new AlertDialog.Builder(MaintainerDetailActivity.this);
+                                                                //加载自定义的那个View,同时设置下
+                                                                final LayoutInflater inflater = MaintainerDetailActivity.this.getLayoutInflater();
+                                                                View view_custom = inflater.inflate(R.layout.alert_info, null, false);
+                                                                ((TextView) view_custom.findViewById(R.id.name)).setText("姓名：" + user.getUser_name());
+                                                                ((TextView) view_custom.findViewById(R.id.phone)).setText("手机：" + user.getUser_phone());
+                                                                ((TextView) view_custom.findViewById(R.id.gender)).setText("性别：" + user.getUser_gender());
+                                                                ((TextView) view_custom.findViewById(R.id.address)).setText(user.getUser_address());
+                                                                builder.setView(view_custom);
+                                                                builder.setCancelable(true);
+                                                                AlertDialog alert = builder.create();
+                                                                alert.show();
+                                                            }
+                                                        });
+                                                    }
+                                                } else if (obj.getUser() < 0 || "".equals(obj.getUser_name())) {
+                                                    ps = conn.prepareStatement("SELECT * FROM maintainer where maintainer_id = " + obj.getMaintainer());
+                                                    rs = ps.executeQuery();
+                                                    while (rs.next()) {
+                                                        final Maintainer maintainer = new Maintainer(rs.getInt("maintainer_id"), rs.getString("maintainer_name"), rs.getString("maintainer_phone"), rs.getString("maintainer_gender"), rs.getString("maintainer_address"), rs.getString("maintainer_pwd"));
+                                                        runOnUiThread(new Runnable() {
+                                                            @Override
+                                                            public void run() {
+                                                                progressBar.setVisibility(View.GONE);
+                                                                //初始化Builder
+                                                                AlertDialog.Builder builder = new AlertDialog.Builder(MaintainerDetailActivity.this);
+                                                                //加载自定义的那个View,同时设置下
+                                                                final LayoutInflater inflater = MaintainerDetailActivity.this.getLayoutInflater();
+                                                                View view_custom = inflater.inflate(R.layout.alert_info, null, false);
+                                                                ((TextView) view_custom.findViewById(R.id.name)).setText("姓名：" + maintainer.getMaintainer_name());
+                                                                ((TextView) view_custom.findViewById(R.id.phone)).setText("手机：" + maintainer.getMaintainer_phone());
+                                                                ((TextView) view_custom.findViewById(R.id.gender)).setText("性别：" + maintainer.getMaintainer_gender());
+                                                                ((TextView) view_custom.findViewById(R.id.address)).setText(maintainer.getMaintainer_address());
+                                                                builder.setView(view_custom);
+                                                                builder.setCancelable(true);
+                                                                AlertDialog alert = builder.create();
+                                                                alert.show();
+                                                            }
+                                                        });
+                                                    }
+                                                }
+                                            } else {
+                                                runOnUiThread(new Runnable() {
+                                                    @Override
+                                                    public void run() {
+                                                        Toast.makeText(MaintainerDetailActivity.this, "抱歉，数据库连接失败；请确认网络是否畅通", Toast.LENGTH_LONG).show();
+                                                    }
+                                                });
+                                            }
+                                        } catch (SQLException e) {
+                                            e.printStackTrace();
+                                        } finally {
+                                            DBUtil.closeDB(conn, ps, rs);
+                                        }
+                                    }
+                                }.start();
+
+                            }
+                        });
                     }
                 };
                 listView.setAdapter(reusableAdapter);
@@ -99,7 +186,7 @@ public class MaintainerDetailActivity extends AppCompatActivity {
                             reply_message = Math.max(reply_message, rs.getInt("message_id"));
                             messages.add(new Message(rs.getInt("message_id"), rs.getInt("maintenance"), rs.getInt("user"), rs.getString("user_name"), rs.getInt("maintainer"), rs.getString("maintainer_name"), rs.getInt("reply_message"), rs.getString("message_content")));
                         }
-                        LogUtil.logV("UserDetailActivity", messages.toString());
+                        LogUtil.logV("MaintainerDetailActivity", messages.toString());
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
@@ -163,7 +250,7 @@ public class MaintainerDetailActivity extends AppCompatActivity {
                                             reply_message = Math.max(reply_message, rs.getInt("message_id"));
                                             messages.add(new Message(rs.getInt("message_id"), rs.getInt("maintenance"), rs.getInt("user"), rs.getString("user_name"), rs.getInt("maintainer"), rs.getString("maintainer_name"), rs.getInt("reply_message"), rs.getString("message_content")));
                                         }
-                                        LogUtil.logV("UserDetailActivity", messages.toString());
+                                        LogUtil.logV("MaintainerDetailActivity", messages.toString());
                                         runOnUiThread(new Runnable() {
                                             @Override
                                             public void run() {
